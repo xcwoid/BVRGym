@@ -21,11 +21,11 @@ pip install jsbsim geopy pyproj pymap3d torch tensorboard py_trees
 See Aircraft and missile performance 
 $ python mainBVRGym.py -track f1 -head 0.0 -alt -1.0 -thr 1.0
 
-Evading single missile 
-# python mainBVRGym.py -track t1 -seed 1
+### Evading single missile 
+python mainBVRGym.py -track t1 -seed 1
 
-Evading two missiles 
-# python mainBVRGym.py -track t2 -seed 1
+### Evading two missiles 
+python mainBVRGym.py -track t2 -seed 1
 
-BVR air combat
-# python mainBVRGym.py -track dog
+### BVR air combat
+python mainBVRGym.py -track dog
