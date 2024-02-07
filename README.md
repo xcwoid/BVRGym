@@ -1,29 +1,21 @@
 # BVRGym
 ## Description
 This library is heavily based on JSBSim software (https://github.com/JSBSim-Team/jsbsim). 
-The primary purpose of this library is to give users the possibility to explore Beyond Visual Range (BVR) tactics using Reinforcement learning.
+This library's primary purpose is to allow users to explore Beyond Visual Range (BVR) tactics using Reinforcement learning.
 
 ## Environment
-Currently there are three available environments:
+Currently, there are three available environments:
 Evading one missile 
 Evading two missile 
 BVR air combat
-The environments above mainly use the F16 flight dynamics model and a BVR missile model. 
-The F16 model has an additional wrapper to simply control, while the BVR missile has a Proportional Navigation guidance law implemented to guide it toward the target.
+The environments above mainly use the F16 flight dynamics and BVR missile models. 
+The F16 model has an additional wrapper to control simply, while the BVR missile has a Proportional Navigation guidance law implemented to guide it toward the target.
 
 ## Requirments
 The following libraries are required to run BVRGym. 
 The code has been tested with Python 3.9 
 
-$ pip install jsbsim
-$ pip install geopy
-$ pip install pyproj
-$ pip install pymap3d
-# Choose own settings for pytorch
-# More infor on https://pytorch.org/get-started/locally/
-$ pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu118
-$ pip install tensorboard
-$ pip install py_trees
+pip install jsbsim geopy pyproj pymap3d torch tensorboard py_trees
 
 ## Getting started 
 See Aircraft and missile performance 
