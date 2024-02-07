@@ -1,1 +1,1 @@
-# BVRGym
+# jsbsim

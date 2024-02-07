@@ -1,0 +1,239 @@
+<system>
+  <property>test/input</property>
+  <property>test/reference</property>
+  <property>test/alpha</property>
+  <property>test/beta</property>
+  <property>test/gamma</property>
+  <property>test/phi</property>
+  <property>test/theta</property>
+  <property>test/psi</property>
+  <property>test/rx</property>
+  <property>test/ry</property>
+  <property>test/rz</property>
+
+  <channel name="test">
+    <fcs_function name="test/sum-values-inverted-input-sign">
+      <input> -test/input </input>
+      <function name="test/sum-values">
+        <sum>
+          <v>1.0</v>
+          <v>-2.5</v>
+        </sum>
+      </function>
+    </fcs_function>
+    <fcs_function name="test/sum-value-property">
+      <function>
+        <sum>
+          <v>1.0</v>
+          <p>test/reference</p>
+        </sum>
+      </function>
+    </fcs_function>
+    <fcs_function name="test/sum-properties">
+      <function>
+        <sum>
+          <p>test/input</p>
+          <p>test/reference</p>
+        </sum>
+      </function>
+    </fcs_function>
+    <summer name="test/summer-with-bias">
+      <input>test/reference</input>
+      <bias>1.0</bias>
+    </summer>
+    <summer name="test/summer">
+      <input>test/input</input>
+      <input>test/reference</input>
+      <output>test/output</output>
+    </summer>
+    <fcs_function name="test/product-values">
+      <function>
+        <product>
+          <v>2.0</v>
+          <pi/>
+        </product>
+      </function>
+    </fcs_function>
+    <fcs_function name="test/product-value-property">
+      <function>
+        <product>
+          <v>1.5</v>
+          <p>test/reference</p>
+        </product>
+      </function>
+    </fcs_function>
+    <fcs_function name="test/product-as-a-no-op">
+      <function>
+        <description>
+          Here product only has one argument and JSBSim interprets it as a
+          no-operation i.e. it does nothing.
+        </description>
+        <product>
+          <sum>
+            <p>test/reference</p>
+            <not>
+              <v> 0.0 </v>
+            </not>
+          </sum>
+        </product>
+      </function>
+    </fcs_function>
+    <fcs_function name="test/sin-value">
+      <function>
+        <sin>
+          <quotient>
+            <pi/>
+            <v> 4.0 </v>
+          </quotient>
+        </sin>
+      </function>
+    </fcs_function>
+    <fcs_function name="test/sin-property">
+      <function>
+        <sin>
+          <p>test/input</p>
+        </sin>
+      </function>
+    </fcs_function>
+    <fcs_function name="test/interpolate1d">
+      <function>
+        <interpolate1d>
+          <p>test/input</p>
+          <v>0.0</v> <v>-1.0</v>
+          <v>1.0</v> <v> 0.0</v>
+          <v>3.0</v> <v> 0.0</v>
+          <v>4.0</v> <v> 2.0</v>
+        </interpolate1d>
+      </function>
+    </fcs_function>
+    <fcs_function name="test/alpha_local">
+      <function>
+        <rotation_alpha_local>
+          <p>test/alpha</p>
+          <p>test/beta</p>
+          <p>test/gamma</p>
+          <p>test/phi</p>
+          <p>test/theta</p>
+          <p>test/psi</p>
+        </rotation_alpha_local>
+      </function>
+    </fcs_function>
+    <fcs_function name="test/beta_local">
+      <function>
+        <rotation_beta_local>
+          <p>test/alpha</p>
+          <p>test/beta</p>
+          <p>test/gamma</p>
+          <p>test/phi</p>
+          <p>test/theta</p>
+          <p>test/psi</p>
+        </rotation_beta_local>
+      </function>
+    </fcs_function>
+    <fcs_function name="test/gamma_local">
+      <function>
+        <rotation_gamma_local>
+          <p>test/alpha</p>
+          <p>test/beta</p>
+          <p>test/gamma</p>
+          <p>test/phi</p>
+          <p>test/theta</p>
+          <p>test/psi</p>
+        </rotation_gamma_local>
+      </function>
+    </fcs_function>
+    <fcs_function name="test/bf_to_wf/x">
+      <function>
+        <rotation_bf_to_wf>
+          <p>test/rx</p>
+          <p>test/ry</p>
+          <p>test/rz</p>
+          <p>test/alpha</p>
+          <p>test/beta</p>
+          <p>test/gamma</p>
+          <v> 1 </v>
+        </rotation_bf_to_wf>
+      </function>
+    </fcs_function>
+    <fcs_function name="test/bf_to_wf/y">
+      <function>
+        <rotation_bf_to_wf>
+          <p>test/rx</p>
+          <p>test/ry</p>
+          <p>test/rz</p>
+          <p>test/alpha</p>
+          <p>test/beta</p>
+          <p>test/gamma</p>
+          <v> 2 </v>
+        </rotation_bf_to_wf>
+      </function>
+    </fcs_function>
+    <fcs_function name="test/bf_to_wf/z">
+      <function>
+        <rotation_bf_to_wf>
+          <p>test/rx</p>
+          <p>test/ry</p>
+          <p>test/rz</p>
+          <p>test/alpha</p>
+          <p>test/beta</p>
+          <p>test/gamma</p>
+          <v> 3 </v>
+        </rotation_bf_to_wf>
+      </function>
+    </fcs_function>
+    <fcs_function name="test/wf_to_bf/x">
+      <function>
+        <rotation_wf_to_bf>
+          <p>test/rx</p>
+          <p>test/ry</p>
+          <p>test/rz</p>
+          <p>test/alpha</p>
+          <p>test/beta</p>
+          <p>test/gamma</p>
+          <v> 1 </v>
+        </rotation_wf_to_bf>
+      </function>
+    </fcs_function>
+    <fcs_function name="test/wf_to_bf/y">
+      <function>
+        <rotation_wf_to_bf>
+          <p>test/rx</p>
+          <p>test/ry</p>
+          <p>test/rz</p>
+          <p>test/alpha</p>
+          <p>test/beta</p>
+          <p>test/gamma</p>
+          <v> 2 </v>
+        </rotation_wf_to_bf>
+      </function>
+    </fcs_function>
+    <fcs_function name="test/wf_to_bf/z">
+      <function>
+        <rotation_wf_to_bf>
+          <p>test/rx</p>
+          <p>test/ry</p>
+          <p>test/rz</p>
+          <p>test/alpha</p>
+          <p>test/beta</p>
+          <p>test/gamma</p>
+          <v> 3 </v>
+        </rotation_wf_to_bf>
+      </function>
+    </fcs_function>
+    <fcs_function name="test/random">
+      <function>
+        <random/>
+      </function>
+    </fcs_function>
+    <fcs_function name="test/random2">
+      <function>
+        <random/>
+      </function>
+    </fcs_function>
+    <fcs_function name="test/urandom">
+      <function>
+        <urandom/>
+      </function>
+    </fcs_function>
+  </channel>
+</system>

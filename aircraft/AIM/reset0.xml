@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<initialize name="reset0 ">
+  <!--
+    This file sets up the AIM missile.
+    <vt unit="FT/SEC">     900.0 </vt>
+  -->
+  <vt unit="FT/SEC">     900 </vt>
+  <latitude unit="DEG">   59.4692  </latitude>
+  <longitude unit="DEG"> 18.0  </longitude>
+  <theta unit="DEG">         0.0 </theta>
+  <psi unit="DEG">            180.0  </psi>
+  <altitude unit="M">     10000.0  </altitude>
+</initialize>

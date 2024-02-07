@@ -1,0 +1,85 @@
+<system>
+  <property>test/input</property>
+  <property>test/reference</property>
+  <channel name="test">
+    <!-- Check the sign of test/input -->
+    <switch name="test/sign1">
+      <test value="-1">
+        test/input lt 0.0
+      </test>
+      <test value="test/reference">
+        test/input eq 0.0
+      </test>
+      <test value="1">
+        test/input gt 0.0
+      </test>
+    </switch>
+    <!-- Invert the sign of test/input before checking its sign.
+         Also check the syntax '==' for the equality comparison.
+    -->
+    <switch name="test/sign2">
+      <test value="-1">
+        -test/input lt 0.0
+      </test>
+      <test value="-test/reference">
+        -test/input == 0.0
+      </test>
+      <test value="1">
+        -test/input gt 0.0
+      </test>
+    </switch>
+    <!-- Test if test/input is higher/equal/lower than another property -->
+    <switch name="test/compare">
+      <test value="-1">
+        test/input lt test/reference
+      </test>
+      <test value="1">
+        test/input ge test/reference
+      </test>
+    </switch>
+    <!-- Test with OR and AND -->
+    <switch name="test/interval">
+      <test value="0">
+        test/input le 0.0
+      </test>
+      <test value="1">
+        test/input gt 0.0
+        test/input lt test/reference
+      </test>
+      <!-- Simulate >= with an OR logic -->
+      <test value="2" logic="OR">
+        test/input gt test/reference
+        test/input == test/reference
+      </test>
+    </switch>
+    <!-- Test a group of conditions -->
+    <switch name="test/group">
+      <default value="0.56"/>
+      <test value="-1.0" logic="OR">
+        <test>
+          test/input le 0.0
+        </test>
+        <test logic="AND">
+          test/input gt 0.1
+          test/input le test/reference
+        </test>
+      </test>
+    </switch>
+    <!-- Test nested tests (issue #176) -->
+    <switch name="test/nested">
+      <default value="0"/>
+      <test logic="AND" value="20">
+        test/reference GT 203
+        <test logic="OR">
+          test/input == 25
+          test/input == 30
+        </test>
+      </test>
+      <test logic="AND" value="25">
+        test/reference GT 170
+        test/reference LT 203
+        test/input == 30
+      </test>
+    </switch>
+  </channel>
+</system>
