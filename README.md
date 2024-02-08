@@ -7,9 +7,13 @@ This library's primary purpose is to allow users to explore Beyond Visual Range 
 
 ## Environment
 Currently, there are three available environments:
+
 Evading one missile 
+
 Evading two missile 
+
 BVR air combat
+
 The environments above mainly use the F16 flight dynamics and BVR missile models. 
 The F16 model has an additional wrapper to control simply, while the BVR missile has a Proportional Navigation guidance law implemented to guide it toward the target.
 
