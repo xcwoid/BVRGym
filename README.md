@@ -29,3 +29,15 @@ python mainBVRGym.py -track t2 -seed 1
 
 ### BVR air combat
 python mainBVRGym.py -track dog
+
+## Parallel processing 
+The following commands are equivalent to the ones above, but they run the process in parallel to speed up convergence. 
+
+### Evading single missile 
+python mainBVRGym_MultiCore.py -track M1  -cpus 8 -Eps 100000 -eps 3
+
+### Evading two missiles 
+python mainBVRGym_MultiCore.py -track M2  -cpus 8 -Eps 100000 -eps 3
+
+### BVR air combat
+python mainBVRGym_MultiCore.py -track Dog -cpus 8 -Eps 10000 -eps 1
