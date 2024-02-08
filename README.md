@@ -24,8 +24,9 @@ The code has been tested with Python 3.9
 pip install jsbsim geopy pyproj pymap3d torch tensorboard py_trees
 
 ## Getting started 
-See Aircraft and missile performance 
-$ python mainBVRGym.py -track f1 -head 0.0 -alt -1.0 -thr 1.0
+To plot Aircraft and Missile behavior 
+
+python mainBVRGym.py -track f1 -head 0.0 -alt -1.0 -thr 1.0
 
 ### Evading single missile 
 python mainBVRGym.py -track t1 -seed 1
