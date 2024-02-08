@@ -3,6 +3,8 @@
 This library is heavily based on JSBSim software (https://github.com/JSBSim-Team/jsbsim). 
 This library's primary purpose is to allow users to explore Beyond Visual Range (BVR) tactics using Reinforcement learning.
 
+![me](https://github.com/xcwoid/BVRGym/blob/main/fg_git.gif)
+
 ## Environment
 Currently, there are three available environments:
 Evading one missile 
