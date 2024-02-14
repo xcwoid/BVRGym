@@ -33,7 +33,7 @@ def runPPO(args):
     elif args['track'] == 'Dog':
         from jsb_gym.RL.config.ppo_evs_PPO_BVRDog import conf_ppo
         env = bvrdog.BVRDog(BVRGym_PPODog, args, aim_dog_BVRGym, f16_dog_BVRGym)
-        torch_save = 'jsb_gym/logs/RL/Dog.pth'
+        torch_save = 'jsb_gym/logs/RL/Dog/'
         state_scale = 1
     elif args['track'] == 'DogR':
         from jsb_gym.RL.config.ppo_evs_PPO_BVRDog import conf_ppo
@@ -88,10 +88,13 @@ def runPPO(args):
         for key in tb_obs0:
             tb_obs0[key] = tb_obs0[key]/nr
             writer.add_scalar(key, tb_obs0[key], i_episode)
+        if i_episode % 500 == 0:
+            # save 
+            torch.save(ppo.policy.state_dict(), torch_save + 'Dog'+str(i_episode) + '.pth')
 
     pool.close()
     pool.join()
-    torch.save(ppo.policy.state_dict(), torch_save)
+    #torch.save(ppo.policy.state_dict(), torch_save)
 
 def train(args):
     if args[0]['track'] == 'M1':

@@ -31,7 +31,7 @@ general = {
         'f16_name': 'f16',
         'f16r_name': 'f16r',
         'sim_time_max': 60*16,           
-        'r_step' : 10,
+        'r_step' : 30,
         'fg_r_step' : 1,
         'missile_idle': False,
         'scale': True,
