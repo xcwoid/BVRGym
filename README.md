@@ -15,7 +15,7 @@ Currently, there are three available environments:
 ### Evading two missile 
 
 ### BVR air combat
-At the beginning of the training, we see that the Red aircraft effectively shoots down the agent with its first missile (aim1r) but later starts using the second missile as well (aimr2). As the training progresses, the agent starts to utilize their own missiles (aim1) and (aim2), and the running reward illustrates that the agent slowly improves its behavior towards defeating the enemy.  
+At the beginning of the training, we see that the Red aircraft effectively shoots down the agent with its first missile (aim1r) but later starts using the second missile as well (aimr2). As the training progresses, the agent starts to utilize their own missiles (aim1) and (aim2), and the running reward illustrates that the agent slowly improves its behavior towards defeating the enemy. Running on 10 CPUs it take less than 4 hours to generate these results.
 
 ![me](https://github.com/xcwoid/BVRGym/blob/main/BVRGymTraining_git.png)
 
@@ -50,4 +50,4 @@ python mainBVRGym_MultiCore.py -track M1  -cpus 8 -Eps 100000 -eps 3
 python mainBVRGym_MultiCore.py -track M2  -cpus 8 -Eps 100000 -eps 3
 
 ### BVR air combat
-python mainBVRGym_MultiCore.py -track Dog -cpus 8 -Eps 10000 -eps 1
+python mainBVRGym_MultiCore.py -track Dog -cpus 10 -Eps 10000 -eps 1
