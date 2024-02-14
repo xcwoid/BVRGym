@@ -17,7 +17,7 @@ Currently, there are three available environments:
 ### BVR air combat
 At the beginning of the training, we see that the Red aircraft effectively shoots down the agent with its first missile (aim1r) but later starts using the second missile as well (aimr2). As the training progresses, the agent starts to utilize their own missiles (aim1) and (aim2), and the running reward illustrates that the agent slowly improves its behavior towards defeating the enemy.  
 
-![me](https://github.com/xcwoid/BVRGym/blob/main/BVRGymTraining.png)
+![me](https://github.com/xcwoid/BVRGym/blob/main/BVRGymTraining_git.png)
 
 
 ## Requirments
