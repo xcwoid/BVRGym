@@ -34,7 +34,7 @@ general = {
         'env_name': 'evasive',
         'f16_name': 'f16',
         'sim_time_max': 60*4,           
-        'r_step' : 20,
+        'r_step' : 30,
         'fg_r_step' : 1,
         'missile_idle': False,
         'scale': True,

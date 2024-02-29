@@ -262,7 +262,7 @@ if __name__ == '__main__':
     runPPO(args)
 
 # training: 
-# python mainBVRGym_MultiCore.py -track M1  -cpus 8 -Eps 100000 -eps 3
-# python mainBVRGym_MultiCore.py -track M2  -cpus 8 -Eps 100000 -eps 3
-# python mainBVRGym_MultiCore.py -track Dog -cpus 8 -Eps 10000 -eps 1
+# python mainBVRGym_MultiCore.py -track M1  -cpus 10 -Eps 100000 -eps 1
+# python mainBVRGym_MultiCore.py -track M2  -cpus 10 -Eps 100000 -eps 1
+# python mainBVRGym_MultiCore.py -track Dog -cpus 10 -Eps 10000 -eps 1
 

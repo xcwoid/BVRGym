@@ -20,7 +20,7 @@ general = {
         'env_name': 'evasive',
         'f16_name': 'f16',
         'sim_time_max': 60*4,           
-        'r_step' : 20,
+        'r_step' : 30,
         'fg_r_step' : 1,
         'missile_idle': False,
         'scale': True,
@@ -55,4 +55,3 @@ f16_rand = {'lat':      [59.0, 59.0],
             'vel':      [250,330],
             'alt':      [6e3, 12e3],
             'heading' : [0, 2*np.pi]}
-
