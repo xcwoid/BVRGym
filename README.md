@@ -52,5 +52,11 @@ To change the behavior of the environment, you can modify the configuration file
 
 Environment: jsb_gym/environments/config
 
-Tactical Units: jsb_gym/TAU/config 
+Tactical Units: jsb_gym/TAU/config
 
+## Additional details 
+Additional details can be found in the following article
+
+BVR Gym: A Reinforcement Learning Environment for Beyond-Visual-Range Air Combat
+
+https://arxiv.org/abs/2403.17533
