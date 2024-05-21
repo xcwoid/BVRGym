@@ -94,16 +94,16 @@ class Env_plots():
         # Get scalar data
         for idx, i in enumerate(self.events):
             #print(i)
-            fig, axs = plt.subplots(3,2)            
-            
-            self.add2axis(axs[0,1], time_s= i.Scalars('sim_time'), scalar= i.Scalars('phi'), label='$\phi$    [deg]', legend=False)
-            self.add2axis(axs[0,1], time_s= i.Scalars('sim_time'), scalar= i.Scalars('phi_ref'), label='$\phi_{ref}$ [deg]', grid=True, legend=True, ylim= [-10, 10])
+            fig, axs = plt.subplots(3,2)
 
-            self.add2axis(axs[1,1], time_s= i.Scalars('sim_time'), scalar= i.Scalars('theta'), label='$\Theta$    [deg]', legend=True)
-            self.add2axis(axs[1,1], time_s= i.Scalars('sim_time'), scalar= i.Scalars('theta_ref'), label='$\Theta_{ref}$ [deg]', grid=True, legend=True, legend_loc= 'upper right')
-            
-            self.add2axis(axs[2,1], time_s= i.Scalars('sim_time'), scalar= i.Scalars('psi'), label='$\psi$    [deg]')
-            self.add2axis(axs[2,1], time_s= i.Scalars('sim_time'), scalar= i.Scalars('psi_ref'), label='$\psi_{ref}$ [deg]', grid=True, legend=True, xlab= 'Time Step [sec]')
+            self.add2axis(axs[0,1], time_s= i.Scalars('sim_time'), scalar= i.Scalars('phi'), label=r'$\phi$    [deg]', legend=False)
+            self.add2axis(axs[0,1], time_s= i.Scalars('sim_time'), scalar= i.Scalars('phi_ref'), label=r'$\phi_{ref}$ [deg]', grid=True, legend=True, ylim= [-10, 10])
+
+            self.add2axis(axs[1,1], time_s= i.Scalars('sim_time'), scalar= i.Scalars('theta'), label=r'$\Theta$    [deg]', legend=True)
+            self.add2axis(axs[1,1], time_s= i.Scalars('sim_time'), scalar= i.Scalars('theta_ref'), label=r'$\Theta_{ref}$ [deg]', grid=True, legend=True, legend_loc= 'upper right')
+
+            self.add2axis(axs[2,1], time_s= i.Scalars('sim_time'), scalar= i.Scalars('psi'), label=r'$\psi$    [deg]')
+            self.add2axis(axs[2,1], time_s= i.Scalars('sim_time'), scalar= i.Scalars('psi_ref'), label=r'$\psi_{ref}$ [deg]', grid=True, legend=True, xlab= 'Time Step [sec]')
 
             self.add2axis(axs[0,0], time_s= i.Scalars('sim_time'), scalar= i.Scalars('altitude'), label='$Alt$ [m]', legend=True, grid=True, legend_loc= 'upper right')
             #self.add2axis(axs, axs_i=[0,0], scalar= i.Scalars('Tgt_psi'), label='Tgt_psi', grid=True, legend=True)
@@ -128,21 +128,20 @@ class Env_plots():
         # Get scalar data
         for idx, i in enumerate(self.events):
             #print(i)
-            fig, axs = plt.subplots(3,2)            
-            
+            fig, axs = plt.subplots(3,2)
 
-            self.add2axis(axs[0,0], time_s= i.Scalars('sim_time'), scalar= i.Scalars('altitude'), label='$Alt$    [m]', legend=True, grid=False, ylim= [0.0, 11e3])
-            self.add2axis(axs[0,0], time_s= i.Scalars('sim_time'), scalar= i.Scalars('altitude_ref'), label='$Alt_{ref}$ [m]', legend=True, grid=True, ylim= [0.0, 11e3])
+            self.add2axis(axs[0,0], time_s= i.Scalars('sim_time'), scalar= i.Scalars('altitude'), label='$Alt$    [m]', legend=True, grid=False, ylim= [0.0, 21e3])
+            self.add2axis(axs[0,0], time_s= i.Scalars('sim_time'), scalar= i.Scalars('altitude_ref'), label='$Alt_{ref}$ [m]', legend=True, grid=True, ylim= [0.0, 21e3])
             self.add2axis(axs[1,0], time_s= i.Scalars('sim_time'), scalar= i.Scalars('Mach'), label='Mach', legend=True, grid= True)
 
-            self.add2axis(axs[0,1], time_s= i.Scalars('sim_time'),scalar= i.Scalars('phi'), label='$\phi$    [deg]', legend=False)
-            self.add2axis(axs[0,1], time_s= i.Scalars('sim_time'), scalar= i.Scalars('phi_ref'), label='$\phi_{ref}$ [deg]', grid=True, legend=True)
+            self.add2axis(axs[0,1], time_s= i.Scalars('sim_time'),scalar= i.Scalars('phi'), label=r'$\phi$    [deg]', legend=False)
+            self.add2axis(axs[0,1], time_s= i.Scalars('sim_time'), scalar= i.Scalars('phi_ref'), label=r'$\phi_{ref}$ [deg]', grid=True, legend=True)
 
-            self.add2axis(axs[1,1], time_s= i.Scalars('sim_time'), scalar= i.Scalars('theta'), label='$\Theta$    [deg]', legend=True)
-            self.add2axis(axs[1,1], time_s= i.Scalars('sim_time'), scalar= i.Scalars('theta_ref'), label='$\Theta_{ref}$ [deg]', grid=True, legend=True)
+            self.add2axis(axs[1,1], time_s= i.Scalars('sim_time'), scalar= i.Scalars('theta'), label=r'$\theta$    [deg]', legend=True)
+            self.add2axis(axs[1,1], time_s= i.Scalars('sim_time'), scalar= i.Scalars('theta_ref'), label=r'$\theta_{ref}$ [deg]', grid=True, legend=True)
             
-            self.add2axis(axs[2,1], time_s= i.Scalars('sim_time'), scalar= i.Scalars('psi'), label='$\psi$    [deg]')
-            self.add2axis(axs[2,1], time_s= i.Scalars('sim_time'), scalar= i.Scalars('psi_ref'), label='$\psi_{ref}$ [deg]', grid=True, legend=True, ylim= [0, 360], xlab= 'Time Step [sec]', legend_loc= 'upper right')
+            self.add2axis(axs[2,1], time_s= i.Scalars('sim_time'), scalar= i.Scalars('psi'), label=r'$\psi$    [deg]')
+            self.add2axis(axs[2,1], time_s= i.Scalars('sim_time'), scalar= i.Scalars('psi_ref'), label=r'$\psi_{ref}$ [deg]', grid=True, legend=True, ylim= [-20, 380], xlab= 'Time Step [sec]', legend_loc= 'upper right')
 
             
             #self.add2axis(axs, axs_i=[0,0], scalar= i.Scalars('Tgt_psi'), label='Tgt_psi', grid=True, legend=True)
@@ -189,8 +188,8 @@ class Env_plots():
             self.add2axis(axs[0,1], time_s= i.Scalars('sim_time'), scalar= i.Scalars('M_get_lat_gc_deg'), label='$Latitude_{M}$', legend=True)
             self.add2axis(axs[0,1], time_s= i.Scalars('sim_time'), scalar= i.Scalars('Tgt_get_lat_gc_deg'), label='$Latitude_{F16}$', grid=True, legend=True)
 
-            self.add2axis(axs[1,1], time_s= i.Scalars('sim_time'), scalar= i.Scalars('M_get_long_gc_deg'), label='Longitude_{M}', legend=True)
-            self.add2axis(axs[1,1], time_s= i.Scalars('sim_time'), scalar= i.Scalars('Tgt_get_long_gc_deg'), label='Longitude_{F16}', grid=True, legend=True, legend_loc= 'lower right')
+            self.add2axis(axs[1,1], time_s= i.Scalars('sim_time'), scalar= i.Scalars('M_get_long_gc_deg'), label='$Longitude_{M}$', legend=True)
+            self.add2axis(axs[1,1], time_s= i.Scalars('sim_time'), scalar= i.Scalars('Tgt_get_long_gc_deg'), label='$Longitude_{F16}$', grid=True, legend=True, legend_loc= 'lower right')
 
             #plt.show()
             fig.savefig(logs_save, bbox_inches="tight")
