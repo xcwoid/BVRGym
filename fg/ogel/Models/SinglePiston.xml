@@ -1,0 +1,144 @@
+<?xml version="1.0"?>
+<!--
+   *************************************************************************
+   This file is part of ogeL.
+
+    ogeL is free software; you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation; either version 2 of the License, or
+    (at your option) any later version.
+
+    ogeL is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with ogeL; if not, write to the Free Software
+    Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
+   *************************************************************************
+
+  For more information see ogel-set.xml or visit
+  http://www.t3r.de/fg/ogel/
+-->
+<PropertyList>
+    <path>SinglePiston.ac</path>
+    <nasal>
+      <load>
+        var livery_update = aircraft.livery_update.new("Aircraft/ogel/Models/Liveries");
+      </load>
+      <unload>
+        livery_update.stop();
+      </unload>
+    </nasal>
+    <animation>
+      <type>material</type>
+      <object-name>Fin</object-name>
+      <property-base>sim/model/livery</property-base>
+      <texture-prop>texture</texture-prop>
+      <texture>schnuller.png</texture>
+    </animation>
+    <animation>
+        <type>rotate</type>
+        <object-name>Head</object-name>
+        <object-name>Helmet</object-name>
+        <object-name>Mouth</object-name>
+        <property>/controls/flight/rudder</property>
+        <factor>-90.0</factor>
+        <axis>
+            <x>0.0</x>
+            <y>0.0</y>
+            <z>1.0</z>
+        </axis>
+        <center>
+            <x-m>0.450591</x-m>
+            <y-m>0</y-m>
+            <z-m>1.56498s</z-m>
+        </center>
+    </animation>
+    <animation>
+        <type>rotate</type>
+        <object-name>Head</object-name>
+        <object-name>Helmet</object-name>
+        <object-name>Mouth</object-name>
+        <property>/controls/flight/elevator</property>
+        <factor>-45.0</factor>
+        <axis>
+            <x>0.0</x>
+            <y>1.0</y>
+            <z>0.0</z>
+        </axis>
+        <center>
+            <x-m>0.450591</x-m>
+            <y-m>0</y-m>
+            <z-m>1.56498</z-m>
+        </center>
+    </animation>
+    <animation>
+        <type>rotate</type>
+        <object-name>LeftArm</object-name>
+        <property>/controls/flight/aileron</property>
+        <factor>+22.5</factor>
+        <offset>+1</offset>
+        <axis>
+            <x>0.0</x>
+            <y>1.0</y>
+            <z>0.0</z>
+        </axis>
+        <center>
+            <x-m>0.45238</x-m>
+            <y-m>0</y-m>
+            <z-m>1.03347</z-m>
+        </center>
+    </animation>
+    <animation>
+        <type>rotate</type>
+        <object-name>RightArm</object-name>
+        <property>/controls/flight/aileron</property>
+        <factor>-22.5</factor>
+        <offset>+1</offset>
+        <axis>
+            <x>0.0</x>
+            <y>1.0</y>
+            <z>0.0</z>
+        </axis>
+        <center>
+            <x-m>0.45238</x-m>
+            <y-m>0</y-m>
+            <z-m>1.03347</z-m>
+        </center>
+    </animation>
+    <animation>
+        <type>spin</type>
+        <object-name>Propeller</object-name>
+        <property>/engines/engine/rpm</property>
+        <factor>-0.1</factor>
+        <max>30</max>
+        <axis>
+            <x>1.0</x>
+            <y>0.0</y>
+            <z>0.0</z>
+        </axis>
+        <center>
+            <x-m>-2.59587</x-m>
+            <y-m>0</y-m>
+            <z-m>-0.00174047</z-m>
+        </center>
+    </animation>
+    <animation>
+        <type>select</type>
+        <object-name>Mouth</object-name>
+        <condition>
+            <property>sim/mouth-open</property>
+        </condition>
+    </animation>
+    <animation>
+        <object-name>Head</object-name>
+        <object-name>Helmet</object-name>
+        <object-name>Mouth</object-name>
+        <type>select</type>
+        <condition>
+            <not><property>sim/current-view/internal</property></not>
+        </condition>
+    </animation>
+</PropertyList>

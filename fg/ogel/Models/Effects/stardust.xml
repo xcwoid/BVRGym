@@ -1,0 +1,113 @@
+<?xml version="1.0"?>
+<PropertyList>
+
+<particlesystem>
+  <name>stardust</name>
+  <texture>star.png</texture>
+  <emissive>true</emissive>
+  <lighting>false</lighting>
+  
+  <offsets>
+   <x-m>0</x-m>
+   <y-m>0</y-m>
+   <z-m>0</z-m>
+  </offsets>
+
+ <condition>
+   <greater-than-equals>
+    <property>velocities/airspeed-kt</property>
+    <value>10</value>
+   </greater-than-equals>
+ </condition>
+   
+  <attach>world</attach>
+
+  <placer>
+   <type>point</type>
+  </placer>
+  
+  <shooter>
+   <theta-min-deg>-5</theta-min-deg>
+   <theta-max-deg>5</theta-max-deg>
+   <phi-min-deg>-5</phi-min-deg>
+   <phi-max-deg>5</phi-max-deg>
+   <speed-mps>
+    <value>0</value>
+    <spread>0</spread>
+   </speed-mps>
+   <rotation-speed>
+    <x-min-deg-sec>5</x-min-deg-sec>
+    <y-min-deg-sec>5</y-min-deg-sec>
+    <z-min-deg-sec>5</z-min-deg-sec>
+    <x-max-deg-sec>10</x-max-deg-sec>
+    <y-max-deg-sec>10</y-max-deg-sec>
+    <z-max-deg-sec>10</z-max-deg-sec>
+   </rotation-speed>
+  </shooter>
+  
+  <counter>
+   <particles-per-sec>
+    <property>velocities/airspeed-kt</property>
+    <factor>0.1</factor>
+    <spread>1</spread>
+   </particles-per-sec>
+  </counter>
+  
+  <align>billboard</align>
+  
+  <particle>
+   <start>
+    <color>
+     <red>
+      <value>0.6</value>
+     </red>
+     <green>
+      <value>0.8</value>
+     </green>
+     <blue>
+      <value>1</value>
+     </blue>
+     <alpha>
+      <value>0.12</value>
+     </alpha>
+    </color>
+    <size>
+     <value>0.8</value>
+    </size>
+   </start>
+   <end>
+    <color>
+     <red>
+      <value>0.6</value>
+     </red>
+     <green>
+      <value>0.8</value>
+     </green>
+     <blue>
+      <value>1</value>
+     </blue>
+     <alpha>
+      <value>0.008</value>
+     </alpha>
+    </color>
+    <size>
+     <value>8</value>
+    </size>
+   </end>
+   <life-sec>
+    <value>5.0</value>
+   </life-sec>
+   <mass-kg>0.00001</mass-kg>
+   <radius-m>0.015</radius-m>
+  </particle>
+  
+  <program>
+   <fluid>air</fluid>
+   <gravity type="bool">false</gravity>
+   <wind type="bool">true</wind>
+  </program>
+  
+</particlesystem>
+
+</PropertyList>
+

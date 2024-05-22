@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+
+<PropertyList>
+    <path>AIM-120.ac</path>
+
+<!-- star effects -->
+<!-- -->
+ <model>
+  <name>stardust</name>
+  <path>Aircraft/ogel/Models/Effects/stardust.xml</path>
+  <offsets>
+   <x-m>9.6</x-m>
+   <y-m>0.5</y-m>
+   <z-m>0.0</z-m>
+  </offsets>
+ </model>
+
+ <model>
+  <name>stardust</name>
+  <path>Aircraft/ogel/Models/Effects/stardust.xml</path>
+  <offsets>
+   <x-m>9.6</x-m>
+   <y-m>-0.5</y-m>
+   <z-m>0.0</z-m>
+  </offsets>
+ </model>
+<!---->
+
+<animation>
+    <type>range</type>
+    <min-m>0</min-m>
+    <max-m>12000</max-m>
+</animation>
+	
+</PropertyList>

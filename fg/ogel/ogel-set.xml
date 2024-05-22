@@ -1,0 +1,150 @@
+<?xml version="1.0"?>
+<!--
+   *************************************************************************
+   This file is part of ogeL.
+
+    ogeL is free software; you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation; either version 2 of the License, or
+    (at your option) any later version.
+
+    ogeL is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with ogeL; if not, write to the Free Software
+    Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
+   *************************************************************************
+
+This is ogeL - inspired by a little toy.
+To use, call 
+
+fgfs -aircraft=ogel 
+(note: the -aircraft parameter has to be written with two hyphens,
+but that is illegal in xml comments)
+
+Permission for noncommercial use is granted by LEGO(R) 
+LEGO Direct Ref. 017353227A (2006-01-12)
+
+LEGO is a trademark of the LEGO Group
+
+for updates and more information see http://www.t3r.de/fg/ogel/
+
+$Revision$
+
+-->
+<PropertyList>
+    <sim>
+        <author>Torsten Dreyer</author>
+        <description>ogeL experimental for JSBSim 2.x (fg after 0.9.9)</description>
+        <status>early-production</status>
+        <rating>
+          <FDM type="int">5</FDM>
+          <systems type="int">5</systems>
+          <cockpit type="int">5</cockpit>
+          <model type="int">5</model>
+        </rating>
+        <tags>
+          <tag>ga</tag>
+          <tag>lego</tag>
+          <tag>prototype</tag>
+          <tag>fixed-gear</tag>
+          <tag>tail-dragger</tag>
+          <tag>stol</tag>
+          <tag>electric</tag> <!-- well, sort of -->
+          <tag>1-engine</tag>
+          <tag>trainer</tag>
+          <tag>aerobatic</tag>
+          <tag>ultralight</tag>
+        </tags>
+        <flight-model>jsb</flight-model>
+        <aero>ogel-jsbsim-2.0</aero>
+        <startup>
+            <splash-texture>Aircraft/ogel/splash.rgb</splash-texture>
+        </startup>
+        <panel>
+            <visibility>false</visibility>
+        </panel>
+        <model>
+            <path>Aircraft/ogel/Models/SinglePiston.xml</path>
+        </model>
+        <view n="0">
+            <internal archive="y">true</internal>
+            <config>
+                <x-offset-m archive="y" type="double">-0.1</x-offset-m>
+                <y-offset-m archive="y" type="double">1.90</y-offset-m>
+                <z-offset-m archive="y" type="double">0.0</z-offset-m>
+                <pitch-offset-deg>-14</pitch-offset-deg>
+            </config>
+        </view>
+        <help>
+            <title>ogeL - fly with fun!</title>
+            <line>Go and explore the world with oLeg, the pilot.</line>
+            <line>Hit the 's' bar and the propeller starts to turn</line>
+            <line>slowly advance the throttle to about 1/2 way full travel</line>
+            <line>shortly after the aircraft lifts its tail, pull the elevator</line>
+            <line>and oLeg will lift of. Good luck!</line>
+        </help>
+        <mouth-open type="bool">false</mouth-open>
+
+        <menubar>
+          <default>
+            <menu n="100">
+              <label>ogeL</label>
+              <enabled type="bool">true</enabled>
+              <item>
+                <label>Select Livery</label>
+                <binding>
+                  <command>nasal</command>
+                  <script>aircraft.livery.dialog.toggle()</script>
+                </binding>
+              </item>
+            </menu>
+          </default>
+        </menubar>
+    </sim>
+
+    <controls>
+        <engines>
+            <engine n="0">
+                <magnetos>3</magnetos>
+            </engine>
+        </engines>
+    </controls>
+
+    <input>
+        <keyboard>
+            <key n="32">
+                <name>Space</name>
+                <desc>Open-Close Mouth</desc>
+                <binding>
+                    <command>property-assign</command>
+                    <property>sim/mouth-open</property>
+                    <value>1</value>
+                </binding>
+                <mod-up>
+                    <binding>
+                        <command>property-assign</command>
+                        <property>sim/mouth-open</property>
+                        <value>0</value>
+                    </binding>
+                </mod-up>
+            </key>
+        </keyboard>
+    </input>
+    <nasal>
+      <ogel>
+        <script>
+        <![CDATA[
+          aircraft.livery.init(
+              "Aircraft/ogel/Models/Liveries", 
+              "sim/model/livery/name" );
+        ]]>
+        </script>
+
+      </ogel>
+    </nasal>
+
+</PropertyList>

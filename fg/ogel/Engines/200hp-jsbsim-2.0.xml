@@ -1,0 +1,48 @@
+<?xml version="1.0"?>
+<!--
+   *************************************************************************
+   This file is part of ogeL.
+
+    ogeL is free software; you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation; either version 2 of the License, or
+    (at your option) any later version.
+
+    ogeL is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with ogeL; if not, write to the Free Software
+    Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
+   *************************************************************************
+
+  For more information see ogel-set.xml or visit
+  http://www.t3r.de/fg/ogel/
+  
+  $Revision$
+-->
+
+<!--
+  File:     200hp.xml
+  Author:   Aero-Matic v 0.8
+
+  Inputs:
+    name:           200hp
+    type:           piston
+    power:          200 hp
+    augmented?      no
+    injected?       no
+-->
+
+<piston_engine name="200hp">
+  <minmp unit="INHG">          6.0 </minmp>
+  <maxmp unit="INHG">         30.0 </maxmp>
+  <displacement unit="IN3"> 320.00 </displacement>
+  <maxhp>        200.00 </maxhp>
+  <cycles>         2.0 </cycles>
+  <idlerpm>      700.0 </idlerpm>
+  <maxthrottle>    1.0 </maxthrottle>
+  <minthrottle>    0.1 </minthrottle>
+</piston_engine>

@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+
+<PropertyList>
+ <sim>
+  <model>
+   <livery>
+    <name type="string">Quietsch-die-Ente.de</name>
+    <texture>quietsch.png</texture>
+   </livery>
+  </model>
+ </sim>
+</PropertyList>
+
