@@ -71,9 +71,9 @@ sudo apt update
 
 More details on https://launchpad.net/~saiarcot895/+archive/ubuntu/flightgear
 
-In ~ /.fgfs/Aircraft/org.flightgear.fgaddon.stable_2020/Aircraft, you should have the f16 model already present, but the missile is missing. 
-Copy the ogel folder from this repo to ~ /.fgfs/Aircraft/org.flightgear.fgaddon.stable_2020/Aircraft to have a missile model as well. 
-To create it, I used the ogel (1) model within the fgfs, replaced the grapical representations of the ogel with a missile that was available in fg (I think it was from (2)) and added a trail from santa (3) model to see the trajectory. 
+In the FlightGear aircraft directory (~ /.fgfs/Aircraft/org.flightgear.fgaddon.stable_2020/Aircraft), you should have the f16 model already present, but not the missile. 
+To have a missile model as well, copy the ogle folder from this repo (fg/ogel) to the Flightgears aircraft directory. 
+To visualize missile in Flightgear, I used the ogel (1) model within the fgfs, replaced the grapical representations of the ogel with a missile that was available in fgfs (I think it was from (2)) and added a trail from santa claus (3) to see the trajectory. 
 
 1) https://wiki.flightgear.org/Ogel
 
