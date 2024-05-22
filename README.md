@@ -81,7 +81,7 @@ To create it, I used the ogel (1) model within the fgfs, replaced the grapical r
 
 3) https://wiki.flightgear.org/Santa_Claus
 
-Given that you have in fgfs ~ /.fgfs/Aircraft/org.flightgear.fgaddon.stable_2020/Aircraft the f16 and ogel directories, you can run the following commands to visualize both units. 
+Given that you have both the f16 and ogle directories in the fgfs directory, you can run the following commands to visualize both units. 
 
 terminal 1: fgfs --fdm=null --native-fdm=socket,in,60,,5550,udp --aircraft=gripen --airport=ESSA --multiplay=out,10,127.0.0.1,5000 --multiplay=in,10,127.0.0.1,5001
 
