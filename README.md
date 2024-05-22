@@ -83,7 +83,7 @@ To visualize missile in Flightgear, I used the ogel (1) model within the fgfs, r
 
 Given that you have both the f16 and ogle directories in the fgfs directory, you can run the following commands to visualize both units. 
 
-terminal 1: fgfs --fdm=null --native-fdm=socket,in,60,,5550,udp --aircraft=gripen --airport=ESSA --multiplay=out,10,127.0.0.1,5000 --multiplay=in,10,127.0.0.1,5001
+terminal 1: fgfs --fdm=null --native-fdm=socket,in,60,,5550,udp --aircraft=f16-block-52 --airport=ESSA --multiplay=out,10,127.0.0.1,5000 --multiplay=in,10,127.0.0.1,5001
 
 terminal 2: fgfs --fdm=null --native-fdm=socket,in,60,,5551,udp --aircraft=ogel --airport=ESSA --multiplay=out,10,127.0.0.1,5001 --multiplay=in,10,127.0.0.1,5000
 
@@ -91,3 +91,4 @@ And run an example:
 
 terminal 3: python mainBVRGym.py -track f1 -head 0.0 -alt -1.0 -thr 1.0 -v
 
+In Flightgear, you can use "v" to change view-point, "x" to zoom in, "ctrl + x" to zoom out
