@@ -63,14 +63,13 @@ https://arxiv.org/abs/2403.17533
 
 ## FlightGear
 FlightGear offers an excellent tool for visualizing the units present in BVR Gym. 
-To install FlightGear 
+To install FlightGear (Tested on Ubuntu 20.04.6 LTS)
 
 sudo add-apt-repository ppa:saiarcot895/flightgear
+
 sudo apt update
 
 More details on https://launchpad.net/~saiarcot895/+archive/ubuntu/flightgear
-
-Tested on Ubuntu 20.04.6 LTS
 
 In ~ /.fgfs/Aircraft/org.flightgear.fgaddon.stable_2020/Aircraft, you should have the f16 model already present, but the missile is missing. 
 Copy the ogel folder from this repo to ~ /.fgfs/Aircraft/org.flightgear.fgaddon.stable_2020/Aircraft to have a missile model as well. 
