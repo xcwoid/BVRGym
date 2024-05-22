@@ -60,3 +60,35 @@ Additional details can be found in the following article
 BVR Gym: A Reinforcement Learning Environment for Beyond-Visual-Range Air Combat
 
 https://arxiv.org/abs/2403.17533
+
+## FlightGear
+FlightGear offers an excellent tool for visualizing the units present in BVR Gym. 
+To install FlightGear 
+
+sudo add-apt-repository ppa:saiarcot895/flightgear
+sudo apt update
+
+More details on https://launchpad.net/~saiarcot895/+archive/ubuntu/flightgear
+
+Tested on Ubuntu 20.04.6 LTS
+
+In ~ /.fgfs/Aircraft/org.flightgear.fgaddon.stable_2020/Aircraft, you should have the f16 model already present, but the missile is missing. 
+Copy the ogel folder from this repo to ~ /.fgfs/Aircraft/org.flightgear.fgaddon.stable_2020/Aircraft to have a missile model as well. 
+To create it, I used the ogel (1) model within the fgfs, replaced the grapical representations of the ogel with a missile that was available in fg (I think it was from (2)) and added a trail from santa (3) model to see the trajectory. 
+
+1) https://wiki.flightgear.org/Ogel
+
+2) https://forum.flightgear.org/viewtopic.php?t=19930#p183249
+
+3) https://wiki.flightgear.org/Santa_Claus
+
+Given that you have in fgfs ~ /.fgfs/Aircraft/org.flightgear.fgaddon.stable_2020/Aircraft the f16 and ogel directories, you can run the following commands to visualize both units. 
+
+terminal 1: fgfs --fdm=null --native-fdm=socket,in,60,,5550,udp --aircraft=gripen --airport=ESSA --multiplay=out,10,127.0.0.1,5000 --multiplay=in,10,127.0.0.1,5001
+
+terminal 2: fgfs --fdm=null --native-fdm=socket,in,60,,5551,udp --aircraft=ogel --airport=ESSA --multiplay=out,10,127.0.0.1,5001 --multiplay=in,10,127.0.0.1,5000
+
+And run an example: 
+
+terminal 3: python mainBVRGym.py -track f1 -head 0.0 -alt -1.0 -thr 1.0 -v
+
