@@ -23,6 +23,31 @@
 -->
 <PropertyList>
     <path>SinglePiston.ac</path>
+     <model>
+  <name>stardust</name>
+  <path>Aircraft/ogel/Models/Effects/stardust.xml</path>
+  <offsets>
+   <x-m>9.6</x-m>
+   <y-m>0.5</y-m>
+   <z-m>0.0</z-m>
+  </offsets>
+ </model>
+
+ <model>
+  <name>stardust</name>
+  <path>Aircraft/ogel/Models/Effects/stardust.xml</path>
+  <offsets>
+   <x-m>9.6</x-m>
+   <y-m>-0.5</y-m>
+   <z-m>0.0</z-m>
+  </offsets>
+ </model>
+    
+    
+    
+    
+    
+    
     <nasal>
       <load>
         var livery_update = aircraft.livery_update.new("Aircraft/ogel/Models/Liveries");
