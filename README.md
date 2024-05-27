@@ -92,3 +92,7 @@ And run an example:
 terminal 3: python mainBVRGym.py -track f1 -head 0.0 -alt -1.0 -thr 1.0 -v
 
 In Flightgear, you can use "v" to change view-point, "x" to zoom in, "ctrl + x" to zoom out
+
+Finally, you should be able to see something like this:
+
+![me](https://github.com/xcwoid/BVRGym/blob/main/im_front_fg.png)
