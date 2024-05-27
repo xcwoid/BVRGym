@@ -72,7 +72,7 @@ sudo apt update
 More details on https://launchpad.net/~saiarcot895/+archive/ubuntu/flightgear
 
 In the FlightGear aircraft directory (~ /.fgfs/Aircraft/org.flightgear.fgaddon.stable_2020/Aircraft), you should have the f16 model already present, but not the missile. 
-To have a missile model as well, copy the ogle folder from this repo (fg/ogel) to the Flightgears aircraft directory. 
+To have a missile model as well, copy the ogel folder from this repo (fg/ogel) to the Flightgears aircraft directory. 
 To visualize missile in Flightgear, I used the ogel (1) model within the fgfs, replaced the grapical representations of the ogel with a missile that was available in fgfs (I think it was from (2)) and added a trail from santa claus (3) to see the trajectory. 
 
 1) https://wiki.flightgear.org/Ogel
@@ -81,7 +81,7 @@ To visualize missile in Flightgear, I used the ogel (1) model within the fgfs, r
 
 3) https://wiki.flightgear.org/Santa_Claus
 
-Given that you have both the f16 and ogle directories in the fgfs directory, you can run the following commands to visualize both units. 
+Given that you have both the f16 and ogel directories in the fgfs directory, you can run the following commands to visualize both units. 
 
 terminal 1: fgfs --fdm=null --native-fdm=socket,in,60,,5550,udp --aircraft=f16-block-52 --airport=ESSA --multiplay=out,10,127.0.0.1,5000 --multiplay=in,10,127.0.0.1,5001
 
