@@ -100,15 +100,14 @@ Finally, you should be able to see something like this:
 
 ## Tacview
 
-Tacview is a flight data analysis tool used to visualize and debrief aerial missions in 2D and 3D, but its not for free. Here are some examples how it looks in tacview for different scenarios 
+Tacview is a flight data analysis tool used to visualize and debrief aerial missions in 2D and 3D, but its not for free. Here are some examples how it looks in tacview for different scenarios. You can find more details on how the flight recording file should look https://www.tacview.net/documentation/csv/en/  
 
-### Evading one missile
+### Evading one missile (Untrained)
 ![Evading one missile](figs/m1.gif)
 
-### Evading two missile 
+### Evading two missile (Untrained)
 ![Evading two missile](figs/m2.gif)
 
 ### BVR air combat (Untrained)
 ![BVR air combat (Untrained)](figs/rl.gif)
 
-You can find more details on how the flight recording file should look https://www.tacview.net/documentation/csv/en/ 
