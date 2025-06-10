@@ -39,7 +39,7 @@ At the beginning of the training, we see that the Red aircraft effectively shoot
 The following libraries are required to run BVRGym. 
 The code has been tested with Python 3.9 
 
-pip install jsbsim geopy pyproj pymap3d torch tensorboard py_trees
+pip install jsbsim geopy pyproj pymap3d torch tensorboard py_trees tqdm
 
 ## Getting started 
 To plot Aircraft and Missile behavior 
@@ -71,7 +71,7 @@ sudo apt update
 
 More details on https://launchpad.net/~saiarcot895/+archive/ubuntu/flightgear
 
-In the FlightGear aircraft directory (~ /.fgfs/Aircraft/org.flightgear.fgaddon.stable_2020/Aircraft), you should have the f16 model already present, but not the missile. 
+In the FlightGear aircraft directory (~ /.fgfs/Aircraft/org.flightgear.fgaddon.stable_2020/Aircraft), you should have the f16 model already present (or just add it in Flightgear in Aircraft/Browse), but not the missile. 
 To have a missile model as well, copy the ogel folder from this repo (fg/ogel) to the Flightgears aircraft directory. 
 To visualize missile in Flightgear, I used the ogel (1) model within the fgfs, replaced the grapical representations of the ogel with a missile that was available in fgfs (I think it was from (2)) and added a trail from santa claus (3) to see the trajectory. 
 
@@ -96,3 +96,19 @@ In Flightgear, you can use "v" to change view-point, "x" to zoom in, "ctrl + x" 
 Finally, you should be able to see something like this:
 
 ![me](https://github.com/xcwoid/BVRGym/blob/main/im_front_fg.png)
+
+
+## Tacview
+
+Tacview is a flight data analysis tool used to visualize and debrief aerial missions in 2D and 3D, but its not for free. Here are some examples how it looks in tacview for different scenarios 
+
+### Evading one missile
+![Evading one missile](figs/m1.gif)
+
+### Evading two missile 
+![Evading two missile](figs/m2.gif)
+
+### BVR air combat (Untrained)
+![BVR air combat (Untrained)](figs/rl.gif)
+
+You can find more details on how the flight recording file should look https://www.tacview.net/documentation/csv/en/ 
