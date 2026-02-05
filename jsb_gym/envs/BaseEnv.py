@@ -15,6 +15,13 @@ from jsb_gym.bts.bts import BVRBT
 
 class BVRBase(gym.Env):
     def __init__(self, conf):
+        '''
+        Main BVR Gym environment class
+        Parameters  
+        ----------
+        conf : Config object
+            Configuration object containing environment parameters
+        '''
         # Environment config file 
         super().__init__()
         self.conf = conf
@@ -30,6 +37,9 @@ class BVRBase(gym.Env):
         self.observation = {}
 
     def reset(self, seed=None, options=None):
+        ''''
+        Reset the environment to an initial state
+        '''
         super().reset(seed=seed)
         
         self.blue_agent = RLBVRAgent(blue_agent, self)
@@ -44,14 +54,14 @@ class BVRBase(gym.Env):
 
         self.red_agent.set_target(self.blue_agent)
         
-
-
         self.update_state()
 
         return self.state, {}
 
     def log_tacview(self):
-
+        '''
+        Log flight data for Tacview
+        '''
         if self.conf.tacview_output_dir is not None:
             if self.tacview_logger is None:
                 self.tacview_logger = TacviewLogger(self)
@@ -109,11 +119,10 @@ class BVRBase(gym.Env):
                 break
         return self.state, self.reward, self.done, self.max_episode_time_passed(), {'done': self.done, 'trunk': self.max_episode_time_passed()}
 
-    def get_red_agent_actions(self):
-        pass
-
     def from_obs2nn(self, agent):
-        
+        '''
+        Convert observation dictionary to neural network input array
+        '''
         bearing_sin = np.sin(np.radians(self.observation['bearing']))
         bearing_cos = np.cos(np.radians(self.observation['bearing']))
         heading_sin = np.sin(np.radians(self.observation['heading']))
@@ -184,3 +193,45 @@ class BVRBase(gym.Env):
         return False
                
 
+class BVREnv_BTvsBT(BVRBase):
+    '''
+    BVR Gym environment class with both agents using behavior trees
+    '''
+    def __init__(self, conf):
+        super().__init__(conf)
+        
+    def reset(self, seed=None, options=None):
+        super().reset(seed=seed)
+
+        blue_agent.agent_name = "BT_blue"
+        self.blue_agent = BTBVRAgent(blue_agent, self)
+        
+        self.red_agent = BTBVRAgent(red_agent, self)
+        
+        self.blue_agent.load_BT(BVRBT)
+        self.red_agent.load_BT(BVRBT)
+        
+        self.all_agents = [self.blue_agent, self.red_agent]
+
+        self.blue_agent.set_target(self.red_agent)
+
+        self.red_agent.set_target(self.blue_agent)
+        
+        self.update_state()
+
+        return self.state, {}
+    
+    def step(self, action):
+        # apply action to agent
+        self.blue_agent.apply_action()
+        self.red_agent.apply_action()
+        # get new observation
+        self.update_state()
+        
+        self.done = self.max_episode_time_passed()
+        # calculate reward
+        # check done
+        
+        self.reward = 0
+        
+        return self.state, self.reward, self.done, self.max_episode_time_passed(), {'done': self.done, 'trunk': self.max_episode_time_passed()}

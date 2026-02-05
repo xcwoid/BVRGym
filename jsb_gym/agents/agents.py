@@ -96,3 +96,24 @@ class RLBVRAgent(BaseBVRAgent):
             self.launch_missile()
         super().apply_action(action)
 
+
+
+
+class BTWVRAgent(BaseBVRAgent):
+    
+    def load_BT(self, BT_model):
+        self.BT = BT_model(self)
+
+    def apply_action(self):
+        self.BT.tick()
+        heading = self.BT.heading
+        altitude = self.BT.altitude
+        throttle = 0.49
+        action = np.array([heading, altitude, throttle])
+        super().apply_action(action)
+
+
+class RLWVRAgent(BaseBVRAgent):   
+    def apply_action(self, action):
+        super().apply_action(action)
+

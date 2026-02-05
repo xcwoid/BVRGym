@@ -39,6 +39,8 @@ class MissileNavigation:
     acceleration_stage_in_sec: float
     dive_at: float  
     tan_ref: float
+    tan_ref_min: float
+    tan_ref_max: float
     theta_min_cruise: float
     theta_max_cruise: float
     theta_min: float

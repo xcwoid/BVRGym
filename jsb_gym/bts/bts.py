@@ -1,160 +1,11 @@
 import py_trees as pt 
 from jsb_gym.bts.reactive_seq import ReactiveSeq
-from jsb_gym.utils.geospatial import dinstance_between_agents, bearing_between_agents, to_360, relative_bearing_between_agents
 
+from jsb_gym.bts.BVR.conditions import MAW_own_condition, MAW_condition, Pursue_condition, Launch_condition
+from jsb_gym.bts.BVR.actions import MAW_guide_evade_action, MAW_evade_action, Guide_own_action, Pursue_action, Launch_action
 
-class MAW_own_condition(pt.behaviour.Behaviour):
-    def __init__(self, name, agent):
-        super(MAW_own_condition, self).__init__(name)
-        self.agent = agent
-
-    def no_own_active_missile(self):
-        active = self.agent.is_own_missile_active()
-        if active:
-            return False
-        else:
-            return True
-
-    def update(self):
-        if self.no_own_active_missile():
-            return pt.common.Status.SUCCESS
-        else:
-            return pt.common.Status.FAILURE
-
-class MAW_guide_evade_action(pt.behaviour.Behaviour):
-    def __init__(self, name, agent):
-        super(MAW_guide_evade_action, self).__init__(name)
-        self.agent = agent
-        self.offset = 80
-        self.altitude = 7e3
-        
-    def update(self):
-        # evade in flank 
-        heading = to_360(bearing_between_agents(self.agent, self.agent.target))
-        self.heading = (heading + self.offset ) %360
-        self.launch_missile = False
-        return pt.common.Status.RUNNING
-
-class MAW_condition(pt.behaviour.Behaviour):
-    def __init__(self, name, agent):
-        super(MAW_condition, self).__init__(name)
-        self.agent = agent
-        
-    def no_incomming_missile(self):
-        active = self.agent.target.is_own_missile_active()
-        if active:
-            return False
-        else:
-            return True
-
-    def update(self):
-        #print('Tick 11C')
-        if self.no_incomming_missile():
-            return pt.common.Status.SUCCESS
-        else:
-            return pt.common.Status.FAILURE
-
-class MAW_evade_action(pt.behaviour.Behaviour):
-    def __init__(self, name, agent):
-        super(MAW_evade_action, self).__init__(name)
-        self.agent = agent
-        self.offset = 180
-        self.altitude = 5e3
-
-        
-    def update(self):
-        heading = to_360(bearing_between_agents(self.agent, self.agent.target))
-        self.heading = (heading + self.offset ) %360
-        self.launch_missile = False
-
-        return pt.common.Status.RUNNING
-
-class Guide_own_action(pt.behaviour.Behaviour):
-    def __init__(self, name, agent):
-        super(Guide_own_action, self).__init__(name)
-        self.agent = agent
-        self.offset = 45
-        self.altitude = 10e3
-
-    
-    def update(self):
-        
-        heading = to_360(bearing_between_agents(self.agent, self.agent.target))
-        self.heading = (heading + self.offset ) %360
-        self.launch_missile = False
-        return pt.common.Status.RUNNING
-
-class Pursue_condition(pt.behaviour.Behaviour):
-    def __init__(self, name, agent):
-        super(Pursue_condition, self).__init__(name)
-        self.agent = agent
-
-    def enemy_not_alive(self):
-        return False
-
-    def update(self):
-        #self.feedback_message = "MAW_condition"
-        if self.enemy_not_alive():
-            return pt.common.Status.SUCCESS
-        else:
-            return pt.common.Status.FAILURE
-
-class Pursue_action(pt.behaviour.Behaviour):
-    def __init__(self, name, agent):
-        super(Pursue_action, self).__init__(name)
-        self.agent = agent
-        self.offset = 0
-        self.altitude = 10e3
-        self.launch_missile = False
-
-    def update(self):
-        
-        heading = to_360(bearing_between_agents(self.agent, self.agent.target))
-        self.heading = (heading + self.offset ) %360        
-        return pt.common.Status.RUNNING
-
-class Launch_condition(pt.behaviour.Behaviour):
-    def __init__(self, name, agent):
-        super(Launch_condition, self).__init__(name)
-        self.agent = agent
-        self.launch_distance = 60e3
-        self.relative_bearing_scope = 40
-
-    def is_in_launch_range(self):
-        dist = dinstance_between_agents(self.agent, self.agent.target)
-        relative_bearing = relative_bearing_between_agents(self.agent, self.agent.target)        
-        
-        if dist < self.launch_distance and abs(relative_bearing) < self.relative_bearing_scope:
-            return True
-        else:
-            return False
-
-    def not_in_launch_position(self):
-        # return status about the blue teams missile 
-        if self.is_in_launch_range():
-            return False
-        else:
-            return True
-
-    def update(self):
-        self.feedback_message = "MAW_condition"
-        if self.not_in_launch_position():
-            return pt.common.Status.SUCCESS
-        else:
-            return pt.common.Status.FAILURE
-
-class Launch_action(pt.behaviour.Behaviour):
-    def __init__(self, name, agent):
-        super(Launch_action, self).__init__(name)
-        self.agent = agent
-        self.altitude = 10e3
-        self.launch_missile = True
-        self.offset = 0
-
-    def update(self):
-        heading = to_360(bearing_between_agents(self.agent, self.agent.target))
-        self.heading = (heading + self.offset ) %360
-        return pt.common.Status.RUNNING
+from jsb_gym.bts.WVR.conditions import WVR_Pursue_condition
+from jsb_gym.bts.WVR.actions import WVR_Pursue_action, WVR_Random_action
 
 
 class BVRBT(object):
@@ -233,17 +84,74 @@ class BVRBT(object):
             print('Unexpected state')
             exit()
 
-        #if self.BTState != self.BTState_old:
-        #    print(self.BTState)
-            #print(self.heading)
-            #print(self.altitude)
-            #print('Red:  BT launch missile ', self.launch_missile)
-
         self.BTState_old = self.BTState
 
 
 
+class WVRBT(object):
+    def __init__(self, agent):
+        self.agent = agent
+        self.BTState = None
+        self.BTState_old = None
+        self.RootSuccess = False 
+        self.root = ReactiveSeq("ReactiveSeq")
+        self.use_memory = False
 
+        '''pursue'''
+        self.pursue = pt.composites.Selector(name= "11", memory = self.use_memory) # 1
+        self.pursue_con = WVR_Pursue_condition('11C', self.agent)
+        self.pursue_act = WVR_Pursue_action('11A', self.agent)
+        self.pursue.add_children([self.pursue_con, self.pursue_act])
+
+        '''root'''
+        self.root.add_children([self.pursue])
+        #tree = pt.trees.BehaviourTree(self.root)
+        #print(ascii_tree(self.root))
+
+    def tick(self):
+        self.root.tick_once()
+        self.BTState = self.root.tip().name
+        if self.BTState == '11A':
+            self.heading = self.pursue_act.heading
+            self.altitude = self.pursue_act.altitude
+        else:
+            print('Unexpected state')
+            exit()
+
+        self.BTState_old = self.BTState
+
+
+class RandomBT(object):
+    def __init__(self, agent):
+        self.agent = agent
+        self.BTState = None
+        self.BTState_old = None
+        self.RootSuccess = False 
+        self.root = ReactiveSeq("ReactiveSeq")
+        self.use_memory = False
+
+        '''pursue'''
+        self.pursue = pt.composites.Selector(name= "11", memory = self.use_memory) # 1
+        self.pursue_con = WVR_Pursue_condition('11C', self.agent)
+        self.pursue_act = WVR_Random_action('11A', self.agent)
+        self.pursue.add_children([self.pursue_con, self.pursue_act])
+
+        '''root'''
+        self.root.add_children([self.pursue])
+        #tree = pt.trees.BehaviourTree(self.root)
+        #print(ascii_tree(self.root))
+
+    def tick(self):
+        self.root.tick_once()
+        self.BTState = self.root.tip().name
+        if self.BTState == '11A':
+            self.heading = self.pursue_act.heading
+            self.altitude = self.pursue_act.altitude
+        else:
+            print('Unexpected state')
+            exit()
+
+        self.BTState_old = self.BTState
 
 
 
