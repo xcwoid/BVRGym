@@ -29,8 +29,9 @@ class WVR_Random_action(pt.behaviour.Behaviour):
         self.heading = random.choice(list(self.heading_list))
         
     def update(self):
-        if random.random() < 0.05:
+        if random.random() < 0.01:
             self.altitude = random.choice(list(self.altitude_list))
+        if random.random() < 0.09:
             self.heading = random.choice(list(self.heading_list))
         return pt.common.Status.RUNNING
 

@@ -1,13 +1,11 @@
-from jsb_gym.envs.WvrEnv import WvrEnv, WvrEnv_ControlZone
+from jsb_gym.envs.WvrEnv import WvrEnv_fg
 from jsb_gym.envs.config import baseEnv_conf
 
 baseEnv_conf.tacview_output_dir = 'data_output/test_wvr/'
 baseEnv_conf.max_episode_time = 60*5
 
 
-#env = WvrEnv(baseEnv_conf)
-env = WvrEnv_ControlZone(baseEnv_conf)
-
+env = WvrEnv_fg(baseEnv_conf)
 obs = env.reset()
 
 done = False
