@@ -14,6 +14,7 @@ done = False
 while not done:
     action = env.action_space.sample()  # Sample a random action
     obs, reward, done, trunk, info = env.step(action)
+    print(reward)
     env.log_tacview()
 print(info)
 print(f"View data in Tacview in {baseEnv_conf.tacview_output_dir}")

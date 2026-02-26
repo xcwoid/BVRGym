@@ -26,14 +26,12 @@ def angle_to_target_in_body_frame_deg(own_agent, target_agent):
     v_enu_body = enu_to_body(v_enu, own_agent)
     aircraft_nose_axis = np.array([1,0,0])
     angle_to_target = angle_between_vectors(aircraft_nose_axis, v_enu_body)
-    return np.degress(angle_to_target)
+    return np.degrees(angle_to_target)
 
 
-def in_gun_wez(own_agent, target_agent, angle_limit = 2):
+def in_gun_wez(own_agent, target_agent, angle_limit = 2, max_range = 3_000, min_range = 500):
     d = dinstance_between_agents(own_agent, target_agent)
     ang = angle_to_target_in_body_frame_deg(own_agent, target_agent)
     if abs(ang) < angle_limit:
-        return gunsnap(d)
+        return gunsnap(d, max_range=f2m(max_range), min_range=f2m(min_range))
     return 0
-
-    
