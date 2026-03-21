@@ -121,7 +121,7 @@ Note that this article relates to an older version of the BVRGym, but it is stil
 
 ## BVRGym for WVR air combat
 
-Even though this library focuses on BVR (beyond-visual-range) air combat, WVR (within-visual-range) combat remains a critical aspect of aerial warfare, and pilots continue to train extensively for it. One of my favorite articles in this field is X, where the authors applied hierarchical reinforcement learning (HRL) to WVR air combat scenarios.
+Even though this library focuses on BVR (beyond-visual-range) air combat, WVR (within-visual-range) combat remains a critical aspect of aerial warfare, and pilots continue to train extensively for it. One of my favorite articles in this field is https://arxiv.org/pdf/2105.00990, where the authors applied hierarchical reinforcement learning (HRL) to WVR air combat scenarios.
 
 In this section, I will reimplement parts of that work; however, the results will not match the performance reported in the original study. The goal here is to keep the implementation as lightweight and simple as possible while still capturing the core ideas.
 
