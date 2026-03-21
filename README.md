@@ -53,7 +53,7 @@ https://github.com/user-attachments/assets/3fcf87ff-1620-43b0-a872-0158c619194b
 terminal 2:
 
 `
-python -m tests.test_aircraft.py
+python -m tests.test_aircraft
 `
 
 
@@ -72,7 +72,7 @@ terminal 2:
 
 terminal 3:
 `
-python -m tests.test_missile.py
+python -m tests.test_missile
 `
 
 
@@ -84,7 +84,7 @@ https://github.com/user-attachments/assets/edada4ad-bd02-46a3-81dc-c766005f0803
 Check that all the ammo is loaded.
 
 `
-python -m tests.test_agent.py
+python -m tests.test_agent
 `
 
 ### Test Tacview (Level 3)
@@ -92,7 +92,7 @@ python -m tests.test_agent.py
 RL agent takes random actions, while the red aircraft is controlled by a behavior tree.
 
 `
-python -m tests.test_tacview.py
+python -m tests.test_tacview
 `
 
 Open tacview (https://www.tacview.net/) and load data in BVRGym/data_output/tacview
@@ -118,3 +118,27 @@ https://arxiv.org/abs/2403.17533
 
 Note that this article relates to an older version of the BVRGym, but it is still valid with remarks to understand Behavior Trees and other part of the environments.
 
+
+## BVRGym for WVR air combat
+
+Even though this library focuses on BVR (beyond-visual-range) air combat, WVR (within-visual-range) combat remains a critical aspect of aerial warfare, and pilots continue to train extensively for it. One of my favorite articles in this field is X, where the authors applied hierarchical reinforcement learning (HRL) to WVR air combat scenarios.
+
+In this section, I will reimplement parts of that work; however, the results will not match the performance reported in the original study. The goal here is to keep the implementation as lightweight and simple as possible while still capturing the core ideas.
+
+
+`
+python -m tests.test_wvr
+`
+
+### Control Zone, AggressiveShooter or ConservativeShooter training
+Uncomment for example train_WvrControlZone() in the main file and run 
+`
+python main.py 
+`
+
+# Self-play
+TODO
+
+# HRL
+
+TODO
