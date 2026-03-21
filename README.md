@@ -135,10 +135,3 @@ Uncomment for example train_WvrControlZone() in the main file and run
 `
 python main.py 
 `
-
-# Self-play
-TODO
-
-# HRL
-
-TODO
