@@ -1,5 +1,7 @@
 import os
 import pandas as pd
+import shutil
+from pathlib import Path
 
 class TacviewLogger:
     def __init__(self, env):
@@ -50,8 +52,13 @@ class TacviewLogger:
 
 
     def save_logs(self):
+        self.mkdir_logs()
         for i in self.data_logs:
             pd.DataFrame(self.data_logs[i][i]).to_csv(f"{self.tacview_output_dir}/{self.data_logs[i]['aircraft_name']} ({self.data_logs[i]['name']}) [{self.data_logs[i]['team']}].csv", index=False)
             for j in self.data_logs[i]['ammo']:
                 pd.DataFrame(self.data_logs[i]['ammo'][j]).to_csv(f"{self.tacview_output_dir}/AIM-120 AMRAAM (AIM{j}) [{self.data_logs[i]['team']}].csv", index=False)
               
+    def mkdir_logs(self):
+        folder = Path(self.tacview_output_dir)
+        shutil.rmtree(folder, ignore_errors=True)  # delete if it exists
+        folder.mkdir(parents=True, exist_ok=True)  # recreate it

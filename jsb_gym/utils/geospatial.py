@@ -76,3 +76,16 @@ def dinstance_between_simObj_agent(own_simObj, target_agent):
     e, n, u = pm.geodetic2enu(lat, lon, h, lat0, lon0, h0, ell=None, deg=True)
     
     return np.linalg.norm(np.array([e, n, u]))
+
+
+def enu_between_agents(own_agent, target_agent):
+    # returns bearing from own_agent to target_agent in degrees
+    lat0 = own_agent.simObj.get_lat_gc_deg()
+    lon0 = own_agent.simObj.get_long_gc_deg()
+    h0   = own_agent.simObj.get_altitude()
+
+    lat = target_agent.simObj.get_lat_gc_deg()
+    lon = target_agent.simObj.get_long_gc_deg()
+    h   = target_agent.simObj.get_altitude()
+    e, n, u = pm.geodetic2enu(lat, lon, h, lat0, lon0, h0, ell=None, deg=True)    
+    return e, n , u

@@ -132,6 +132,9 @@ class AAMBVR(FDMObject):
         
         if self.target_norm > self.conf.missile_navigation.dive_at:
             altitude_cmd = self.conf.missile_navigation.alt_cruise
+            self.conf.missile_navigation.tan_ref = self.conf.missile_navigation.tan_ref_max
+        else:
+            self.conf.missile_navigation.tan_ref = self.conf.missile_navigation.tan_ref_min
         
         for _ in range(self.missile_simulation_config.Control_time_step):
                 
